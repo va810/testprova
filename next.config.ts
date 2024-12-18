@@ -1,7 +1,15 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    serverActions: {
+      allowedOrigins: [
+        'localhost:3000', // localhost
+        /^https:\/\/.*\.app\.github\.dev$/, // Codespaces
+      ],
+      allowedForwardedHosts: ['*'],
+      bodySizeLimit: '2mb',
+    },
+  },
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-export default nextConfig;
+export default nextConfig
