@@ -3,15 +3,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
+import { sql } from "@vercel/postgres";
 
 export default async function StudentRegistrationForm() {
  async function registerStudent(formData: FormData) {
   'use server'
-  const name = formData.get('name')
-  const email = formData.get('email')
-  console.log('Estudante registrado:', { name, email })
-  
-  //return { success: true, message: 'Estudante registrado com sucesso!' }
+  const name = formData.get('name') as string;
+  const email = formData.get('email') as string;
+  await sql`INSERT INTO  students (name, email) VALUES (${name}, ${email})` 
+  console.log('Estudante registrado:', { name, email }
+    
+  )
 }
 
   return (
