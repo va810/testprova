@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import Link from "next/link"
 
 export function LoginForm({
   className,
@@ -58,7 +59,7 @@ export function LoginForm({
                     id="email"
                     type="email"
                     placeholder="m@example.com"
-                    required
+                  
                   />
                 </div>
                 <div className="grid gap-2">
@@ -71,11 +72,15 @@ export function LoginForm({
                       Forgot your password?
                     </a>
                   </div>
-                  <Input id="password" type="password" required />
+                  <Input id="password" type="password" />
                 </div>
+                
+              <Link href="/dashboard">
                 <Button type="submit" className="w-full">
                   Login
                 </Button>
+              </Link>
+
               </div>
               <div className="text-center text-sm">
                 Don&apos;t have an account?{" "}
