@@ -5,15 +5,19 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { sql } from "@vercel/postgres";
 
+import { redirect } from "next/navigation";
+
+
 export default async function StudentRegistrationForm() {
  async function registerStudent(formData: FormData) {
   'use server'
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
   await sql`INSERT INTO  students (name, email) VALUES (${name}, ${email})` 
-  console.log('Estudante registrado:', { name, email }
-    
-  )
+  console.log('Estudante registrado:', { name, email })
+ 
+  redirect('/dashboard/student/list');
+ 
 }
 
   return (
